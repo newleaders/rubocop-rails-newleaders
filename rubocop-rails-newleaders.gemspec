@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rubocop", ">= 1.74"
   s.add_dependency "rubocop-rails", ">= 2.30"
   s.add_dependency "rubocop-performance", ">= 1.24"
+  s.add_dependency "rubocop-rails-omakase", ">= 1.0"
   s.add_dependency "rubocop-rspec", ">= 2.14"
 
   s.files = %w[ rubocop.yml ]

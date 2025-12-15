@@ -14,13 +14,15 @@ plugins:
   - rubocop-rspec
   - rubocop-performance
 
+inherit_gem:
+    rubocop-rails-omakase: rubocop.yml
+
 AllCops:
   Exclude:
     - 'bin/*' # Executable scripts
     - 'config.ru' # Rack configuration file
     - 'Rakefile' # Rake tasks file
   NewCops: enable
-
 
 # Turn on all the default cops - this is counterintuitive since rubocop-rails-omakase
 # explicitly disables many cops, but we want to ensure a strict baseline.

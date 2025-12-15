@@ -16,5 +16,6 @@ inherit_gem:
   # Inherit a second configuration for New Leaders specific rules
   rubocop-rails-newleaders: rubocop.yml
 
-... # Your own custom rules can go here as well
+  # Your own custom rules can go here as well
+  ...
 ```
