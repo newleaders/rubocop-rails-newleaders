@@ -1,0 +1,98 @@
+# Overwrite or add rules to create your own house style.
+# Bring some level of sanity to the otherwise "I don't care" ethos of rubocop-rails-omakase.
+# Why even use rubocop if rubocop-rails-omakase basically disables all the rules?
+
+# The expectation is that this is to be included after rubocop-rails-omakase's config.
+# Some of these cops may already be enabled by rubocop-rails-omakase, but we may need
+# to explicitly enable or re-configure them here to ensure they are set as desired.
+# If a configuration is present here as well as in rubocop-rails-omakase, the intention
+# is for this configuration to take precedence (override) - not duplicate.
+#
+# Enable RSpec cops for test files
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'bin/*' # Executable scripts
+    - 'config.ru' # Rack configuration file
+    - 'Rakefile' # Rake tasks file
+  NewCops: enable
+
+
+# Turn on all the default cops - this is counterintuitive since rubocop-rails-omakase
+# explicitly disables many cops, but we want to ensure a strict baseline.
+# Especially for security-related cops that may be disabled by default.
+Bundler:
+  Enabled: true
+Gemspec:
+  Enabled: true
+Layout:
+  Enabled: true
+Lint:
+  Enabled: true
+Metrics:
+  Enabled: true
+Naming:
+  Enabled: true
+Performance:
+  Enabled: true
+  Exclude:
+    - "spec/**/*"
+Rails:
+  Enabled: true
+Security:
+  Enabled: true
+Style:
+  Enabled: true
+
+# --- Layout Cops ---
+# These manage code formatting and layout.
+Layout/IndentationConsistency:
+  Description: 'Ensure consistent indentation throughout the codebase.'
+  Enabled: true
+  EnforcedStyle: normal
+
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
+# Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBrackets: no_space
+
+# --- Metrics & Performance Cops ---
+# These manage code size and performance hints.
+# Reasonable but not overly strict limits are set here.
+Metrics/MethodLength:
+  Description: 'Avoid overly long methods for better readability and maintainability.'
+  Enabled: true
+  Max: 25 # Set a maximum of 25 lines per method
+
+Metrics/ClassLength:
+  Description: 'Avoid overly long classes.'
+  Enabled: true
+  Max: 150 # Set a maximum of 150 lines per class (excluding comments/blanks)
+
+Metrics/BlockLength:
+  Description: 'Avoid overly long blocks.'
+  Enabled: true
+  Exclude:
+    - 'config/routes.rb' # Routes files often have long blocks for route definitions
+    - 'db/**/*.rb' # Database migration files can have long blocks
+    - 'lib/tasks/**/*.rake' # Rake tasks often have long blocks for task definitions
+
+# --- Rails Cops ---
+# These manage Rails-specific best practices.
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# --- Style Cops ---
+# These manage stylistic choices in the codebase.
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
