@@ -61,9 +61,7 @@ Layout/IndentationWidth:
 
 # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 Layout/SpaceInsideArrayLiteralBrackets:
-  Enabled: true
-  EnforcedStyle: no_space
-  EnforcedStyleForEmptyBrackets: no_space
+  Enabled: false
 
 # --- Metrics & Performance Cops ---
 # These manage code size and performance hints.
@@ -90,6 +88,16 @@ Metrics/BlockLength:
 # These manage Rails-specific best practices.
 Rails/I18nLocaleTexts:
   Enabled: false
+
+# --- RSpec Cops ---
+# These manage RSpec testing best practices.
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 20
+
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 4
 
 # --- Style Cops ---
 # These manage stylistic choices in the codebase.
