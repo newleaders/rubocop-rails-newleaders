@@ -1,5 +1,7 @@
 Inspired by [rubocop-rails-omakase](https://github.com/rails/rubocop-rails-omakase), this is New Leaders take on reasonable defaults for RuboCop in Ruby on Rails projects.
 
+Bring some level of sanity to the otherwise "who cares?" ethos of rubocop-rails-omakase. Why even use rubocop if we disable nearly all the rules?
+
 Intended to inherit from and OVERRIDE the `rubocop-rails-omakase` gem. Install with:
 
 ```ruby

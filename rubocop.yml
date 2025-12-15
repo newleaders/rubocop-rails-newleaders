@@ -1,19 +1,13 @@
-# Overwrite or add rules to create your own house style.
-# Bring some level of sanity to the otherwise "I don't care" ethos of rubocop-rails-omakase.
-# Why even use rubocop if rubocop-rails-omakase basically disables all the rules?
+# New Leaders' house style.
 
-# The expectation is that this is to be included after rubocop-rails-omakase's config.
-# Some of these cops may already be enabled by rubocop-rails-omakase, but we may need
-# to explicitly enable or re-configure them here to ensure they are set as desired.
-# If a configuration is present here as well as in rubocop-rails-omakase, the intention
-# is for this configuration to take precedence (override) - not duplicate.
-#
 # Enable RSpec cops for test files
 plugins:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
 
+# Inherit from rubocop-rails-omakase and override specific settings
+# COMBAK: maybe we simply tune and drop this dependency altogether?
 inherit_gem:
     rubocop-rails-omakase: rubocop.yml
 
