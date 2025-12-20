@@ -55,6 +55,9 @@ Layout/IndentationWidth:
   Enabled: true
   Width: 2
 
+Layout/LineLength:
+  AllowedPatterns: ['^ *# '] # ignore ruby comment lines
+
 # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
@@ -62,10 +65,28 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # --- Metrics & Performance Cops ---
 # These manage code size and performance hints.
 # Reasonable but not overly strict limits are set here.
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - 'db/**/*.rb'
+    - '**/*.rake'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Guardfile'
+    - 'config/environments/*.rb'
+    - 'config/routes.rb'
+    - 'db/**/*.rb'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
 Metrics/MethodLength:
   Description: 'Avoid overly long methods for better readability and maintainability.'
   Enabled: true
   Max: 25 # Set a maximum of 25 lines per method
+  Exclude:
+    - 'db/migrate/*'
+    - '**/*.rake'
 
 Metrics/ClassLength:
   Description: 'Avoid overly long classes.'
@@ -80,10 +101,22 @@ Metrics/BlockLength:
     - 'db/**/*.rb' # Database migration files can have long blocks
     - 'lib/tasks/**/*.rake' # Rake tasks often have long blocks for task definitions
 
+# --- Naming Cops ---
+# These manage naming conventions in the codebase.
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
 # --- Rails Cops ---
 # These manage Rails-specific best practices.
 Rails/I18nLocaleTexts:
   Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - staging
+    - test
+    - production
 
 # --- RSpec Cops ---
 # These manage RSpec testing best practices.
@@ -91,12 +124,23 @@ RSpec/ExampleLength:
   Enabled: true
   Max: 20
 
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+
 RSpec/NestedGroups:
   Enabled: true
   Max: 4
 
 # --- Style Cops ---
 # These manage stylistic choices in the codebase.
+Style/AsciiComments:
+  AllowedChars:
+    - ©
+    - €
+
 Style/Documentation:
   Enabled: false
 
