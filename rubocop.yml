@@ -72,6 +72,8 @@ Metrics/AbcSize:
     - '**/*.rake'
 
 Metrics/BlockLength:
+  Description: 'Avoid overly long blocks.'
+  Enabled: true
   Exclude:
     - 'Guardfile'
     - 'config/environments/*.rb'
@@ -80,6 +82,11 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*.rb'
 
+Metrics/ClassLength:
+  Description: 'Avoid overly long classes.'
+  Enabled: true
+  Max: 150 # Set a maximum of 150 lines per class (excluding comments/blanks)
+
 Metrics/MethodLength:
   Description: 'Avoid overly long methods for better readability and maintainability.'
   Enabled: true
@@ -87,19 +94,6 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/*'
     - '**/*.rake'
-
-Metrics/ClassLength:
-  Description: 'Avoid overly long classes.'
-  Enabled: true
-  Max: 150 # Set a maximum of 150 lines per class (excluding comments/blanks)
-
-Metrics/BlockLength:
-  Description: 'Avoid overly long blocks.'
-  Enabled: true
-  Exclude:
-    - 'config/routes.rb' # Routes files often have long blocks for route definitions
-    - 'db/**/*.rb' # Database migration files can have long blocks
-    - 'lib/tasks/**/*.rake' # Rake tasks often have long blocks for task definitions
 
 # --- Naming Cops ---
 # These manage naming conventions in the codebase.
